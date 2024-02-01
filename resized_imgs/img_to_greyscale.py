@@ -3,7 +3,7 @@ import glob
 from PIL import Image
 
 # Set the directory path
-directory_path = r'C:\Users\Nobod\Documents\GitHub\Public-Unet-Image-Color-Reverser-or-Processor\resized_imgs'
+directory_path = './resized_imgs'
 
 # List all the files ending with '_before.jpg' in the directory
 files_to_convert = glob.glob(os.path.join(directory_path, '*_before.jpg'))

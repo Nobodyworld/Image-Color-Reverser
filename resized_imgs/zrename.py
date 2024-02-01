@@ -10,7 +10,7 @@ counter = 1
 for filename in os.listdir(input_dir):
     if filename.lower().endswith('.jpg') or filename.lower().endswith('.jpeg') or filename.lower().endswith('.png'):
         # Construct new filename
-        new_filename = f'wikks_{str(counter).zfill(2)}_after{os.path.splitext(filename)[1]}'
+        new_filename = f'output_test_{str(counter).zfill(2)}_before{os.path.splitext(filename)[1]}'
         # Rename the file
         os.rename(os.path.join(input_dir, filename), os.path.join(input_dir, new_filename))
         # Increment counter
