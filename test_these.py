@@ -6,12 +6,11 @@ from model import UNet
 
 img_height = 384
 img_width = 256
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load the trained model
 model = UNet()
-model.load_state_dict(torch.load("best_denocoder_pytorch.pth"))
+model.load_state_dict(torch.load("best_psnr_denocoder_pytorch.pth"))
 model = model.to(device)
 model.eval()
 
