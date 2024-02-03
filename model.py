@@ -223,7 +223,7 @@ def main():
     # Initialize the model, loss, and optimizer
     l1_criterion = nn.L1Loss()
     mse_criterion = nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.00002)#, weight_decay=0.0001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.000001)#, weight_decay=0.0001)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=10, verbose=True)
     best_val_loss = float('inf')
     best_val_psnr = 0
