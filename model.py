@@ -223,8 +223,8 @@ def main():
     # Initialize the model, loss, and optimizer
     l1_criterion = nn.L1Loss()
     mse_criterion = nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.00001)#, weight_decay=0.0001)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=5, verbose=True)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.00002)#, weight_decay=0.0001)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=10, verbose=True)
     best_val_loss = float('inf')
     best_val_psnr = 0
     best_loss_model_state = None
@@ -236,9 +236,9 @@ def main():
 
     epochs_since_best_val_psnr = 0
 
-    early_stopping_patience = 24
+    early_stopping_patience = 12
     initial_accumulation_steps = 3
-    step_decrease_interval = 8
+    step_decrease_interval = 12
 
     for epoch in range(epochs):
         accumulation_steps = max(1, initial_accumulation_steps - (epoch // step_decrease_interval)) 
