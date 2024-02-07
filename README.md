@@ -114,7 +114,7 @@ GPU: NVIDIA GeForce RTX 3060
 tensor([5., 7., 9.], device='cuda:0')
 
 /zcount_parameter.py
-Number of trainable parameters: 1587411
+Number of trainable parameters: 2497875
 
 /model.py
 No pre-trained model found. Training from scratch.
