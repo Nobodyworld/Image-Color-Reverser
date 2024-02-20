@@ -1,0 +1,49 @@
+{
+    "input_channels": 3,
+    "output_channels": 3,
+    "filter_base": 16,
+    "depth": 8,
+    "activation": "ReLU",
+    "up_mode": "bilinear",
+    "use_batchnorm": true,
+    "blocks": [
+      {
+        "type": "encoder",
+        "layers": [
+          {"type": "Conv2d", "out_channels_factor": 1, "kernel_size": 3, "padding": 1},
+          {"type": "BatchNorm2d", "factor": 1},
+          {"type": "ReLU", "inplace": true},
+          {"type": "Conv2d", "out_channels_factor": 1, "kernel_size": 3, "padding": 1},
+          {"type": "BatchNorm2d", "factor": 1},
+          {"type": "ReLU", "inplace": true},
+          {"type": "MaxPool2d", "kernel_size": 2, "stride": 2}
+        ]
+      },
+      {
+        "type": "mid",
+        "repeat": 9,
+        "layers": [
+          {"type": "Conv2d", "out_channels_factor": 8, "kernel_size": 3, "padding": 1},
+          {"type": "BatchNorm2d", "factor": 8},
+          {"type": "ReLU", "inplace": true}
+        ]
+      },
+      {
+        "type": "decoder",
+        "layers": [
+          {"type": "Upsample", "scale_factor": 2, "mode": "bilinear", "align_corners": true},
+          {"type": "Conv2d", "out_channels_factor": 0.5, "kernel_size": 3, "padding": 1},
+          {"type": "BatchNorm2d", "factor": 0.5},
+          {"type": "ReLU", "inplace": true}
+        ]
+      },
+      {
+        "type": "final",
+        "layers": [
+          {"type": "Conv2d", "out_channels": 3, "kernel_size": 1},
+          {"type": "Sigmoid"}
+        ]
+      }
+    ]
+  }
+  

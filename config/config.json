@@ -1,0 +1,77 @@
+{
+  "directories": {
+    "data": {
+      "train": "./data/train",
+      "test": "./data/test",
+      "val": "./data/val",
+      "play_data": "./data/play_data",
+      "play_data_output": "./data/play_data/output",
+      "stage_data": "./data/stage_data"
+    },
+    "models": "./models",
+    "config": "./config",
+    "tests": "./tests",
+    "utils": "./utils"
+  },
+  "model": {
+    "name": "unet",
+    "architecture": "unet.py",
+    "path": "./models/other_model/",
+    "file_name": "other_model.pth"
+  },
+  "training": {
+    "epochs": 36,
+    "batch_size": 2,
+    "accumulation_steps": 1,
+    "num_workers": 4,
+    "pin_memory": true,
+    "shuffle": true,
+    "early_stopping": true,
+    "early_stopping_patience": 8,
+    "step_decrease_interval": 8,
+    "img_height": 384,
+    "img_width": 256
+  },
+  "optimizer": {
+    "type": "adam",
+    "params": {
+      "lr": 0.00001,
+      "weight_decay": 0.001
+    }
+  },
+  "scheduler": {
+    "type": "ReduceLROnPlateau",
+      "params": {
+        "mode": "max",
+        "factor": 0.5,
+        "patience": 5,
+        "verbose": true
+        }   
+  },
+  "augmentation": {
+    "color_jitter": {
+      "enabled": false,
+      "p": 0.25,
+      "brightness": 0.2,
+      "contrast": 0.2,
+      "saturation": 0.2,
+      "hue": 0.1
+    }
+  },
+  "metrics": {
+    "psnr": {
+      "enabled": true,
+      "max_pixel": 1.0,
+      "eps": 1e-10,
+      "reduction": "mean"
+    },
+    "ssim": {
+      "enabled": false
+    
+    }
+  }
+}
+  
+
+
+  
