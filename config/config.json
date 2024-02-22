@@ -35,7 +35,7 @@
   "optimizer": {
     "type": "adam",
     "params": {
-      "lr": 0.001,
+      "lr": 0.0002,
       "weight_decay": 0.00004
     }
   },
